@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "353648899014",
+    "project_id": "submarine-378b6",
+    "storage_bucket": "submarine-378b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:353648899014:android:ae04f103528d5566fa38c7",
+        "android_client_info": {
+          "package_name": "com.rachad.mysubmarine"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "353648899014-h0tphqlc445mhdc6v8b360b8a5g13g3q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rachad.mysubmarine",
+            "certificate_hash": "a88af5350d495b9a754f7a60f11f9852fca20222"
+          }
+        },
+        {
+          "client_id": "353648899014-0no9kmhvjvo9kf6lasn3f7l7qc8jvadm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWj1zCoSQIjiwRYABxbg1D5m8g-aOzw9k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "353648899014-0no9kmhvjvo9kf6lasn3f7l7qc8jvadm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
