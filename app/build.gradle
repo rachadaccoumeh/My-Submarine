@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
 }
+
 android {
     compileSdk 32
 
@@ -33,13 +34,16 @@ android {
     dataBinding {
         enabled true
     }
+    namespace 'com.rachad.mysubmarine'
 }
+apply plugin: 'com.google.gms.google-services'
 
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'com.google.android.material:material:1.6.1'
-    def lifecycle_version = "2.5.1"//"2.6.0-alpha01"
+//    implementation 'com.google.firebase:firebase-database-ktx:20.0.3'
+    def lifecycle_version = "2.5.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation platform('com.google.firebase:firebase-bom:30.3.2')
@@ -47,4 +51,3 @@ dependencies {
 
     implementation 'io.github.controlwear:virtualjoystick:1.10.1'
 }
-

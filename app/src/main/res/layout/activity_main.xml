@@ -7,59 +7,294 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".ui.MainActivity">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.626"
+            android:gravity="center"
+            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.973">
+            app:layout_constraintTop_toTopOf="parent">
 
-            <io.github.controlwear.virtual.joystick.android.JoystickView
-                android:id="@+id/leftMotorJoystick"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:JV_backgroundColor="#009688"
-                app:JV_borderColor="#00796B"
-                app:JV_borderWidth="4dp"
-                app:JV_buttonColor="#FF6E40"
-                app:JV_buttonDirection="vertical"
-                app:JV_buttonSizeRatio="20%"
-                app:JV_fixedCenter="false" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <io.github.controlwear.virtual.joystick.android.JoystickView
-                android:id="@+id/allMotorJoystick"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:JV_backgroundColor="#009688"
-                app:JV_borderColor="#00796B"
-                app:JV_borderWidth="4dp"
-                app:JV_buttonColor="#FF6E40"
-                app:JV_buttonDirection="vertical"
-                app:JV_buttonSizeRatio="20%"
-                app:JV_fixedCenter="false" />
+                <TextView
+                    android:id="@+id/textViewAllBallast"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="all ballast"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
 
-            <io.github.controlwear.virtual.joystick.android.JoystickView
-                android:id="@+id/rightMotorJoystick"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:JV_backgroundColor="#009688"
-                app:JV_borderColor="#00796B"
-                app:JV_borderWidth="4dp"
-                app:JV_buttonColor="#FF6E40"
-                app:JV_buttonDirection="vertical"
-                app:JV_buttonSizeRatio="20%"
-                app:JV_fixedCenter="false" />
+                <SeekBar
+                    android:id="@+id/seekBarAllBallast"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="30"
+                    android:progress="0" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewBallast1"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="ballast RT"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+
+                <SeekBar
+                    android:id="@+id/seekBar1"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="30"
+                    android:progress="0" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewBallast2"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="ballast RB"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+
+                <SeekBar
+                    android:id="@+id/seekBar2"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="30"
+                    android:progress="0" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewBallast3"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="ballast LB"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+
+                <SeekBar
+                    android:id="@+id/seekBar3"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="30"
+                    android:progress="0" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewBallast4"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="ballast LT"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+
+
+                <SeekBar
+                    android:id="@+id/seekBar4"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="30"
+                    android:progress="0" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:padding="10dp">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <WebView
+                    android:id="@+id/webView"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewX"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="X:"
+                        android:textColor="@color/black"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/textViewY"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Y:"
+                        android:textColor="@color/black"
+                        android:textSize="25sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Left Motor"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <io.github.controlwear.virtual.joystick.android.JoystickView
+                    android:id="@+id/leftMotorJoystick"
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    app:JV_backgroundColor="#009688"
+                    app:JV_borderColor="#00796B"
+                    app:JV_borderWidth="4dp"
+                    app:JV_buttonColor="#FF6E40"
+                    app:JV_buttonDirection="vertical"
+                    app:JV_buttonSizeRatio="20%"
+                    app:JV_fixedCenter="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="R/L Motor"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <io.github.controlwear.virtual.joystick.android.JoystickView
+                    android:id="@+id/allMotorJoystick"
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    app:JV_backgroundColor="#009688"
+                    app:JV_borderColor="#00796B"
+                    app:JV_borderWidth="4dp"
+                    app:JV_buttonColor="#FF6E40"
+                    app:JV_buttonDirection="vertical"
+                    app:JV_buttonSizeRatio="20%"
+                    app:JV_fixedCenter="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Right Motor"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <io.github.controlwear.virtual.joystick.android.JoystickView
+                    android:id="@+id/rightMotorJoystick"
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    app:JV_backgroundColor="#009688"
+                    app:JV_borderColor="#00796B"
+                    app:JV_borderWidth="4dp"
+                    app:JV_buttonColor="#FF6E40"
+                    app:JV_buttonDirection="vertical"
+                    app:JV_buttonSizeRatio="20%"
+                    app:JV_fixedCenter="false" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 </layout>

@@ -1,13 +1,14 @@
 {
   "project_info": {
     "project_number": "353648899014",
+    "firebase_url": "https://submarine-378b6-default-rtdb.firebaseio.com",
     "project_id": "submarine-378b6",
     "storage_bucket": "submarine-378b6.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:353648899014:android:ae04f103528d5566fa38c7",
+        "mobilesdk_app_id": "1:353648899014:android:fd443dc3679d5261fa38c7",
         "android_client_info": {
           "package_name": "com.rachad.mysubmarine"
         }
