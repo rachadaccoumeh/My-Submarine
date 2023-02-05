@@ -1,14 +1,19 @@
 package com.rachad.mysubmarine.ui
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.graphics.drawable.ClipDrawable
+import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.ProgressBar
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.rachad.mysubmarine.R
@@ -20,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n", "SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         val mainViewModel: MainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
@@ -30,26 +35,29 @@ class MainActivity : AppCompatActivity() {
 
         binding.rightMotorJoystick.setOnMoveListener { angle, strength ->
             if (angle == 90)
-                mainViewModel.updateMotorsSpeed(strength, 0)
+                mainViewModel.updateRightMotorsSpeed(strength)
             else
-                mainViewModel.updateMotorsSpeed(-strength, 0)
+                mainViewModel.updateRightMotorsSpeed(-strength)
         }
         binding.leftMotorJoystick.setOnMoveListener { angle, strength ->
             if (angle == 90)
-                mainViewModel.updateMotorsSpeed(0, strength)
+                mainViewModel.updateLeftMotorsSpeed(strength)
             else
-                mainViewModel.updateMotorsSpeed(0, -strength)
+                mainViewModel.updateLeftMotorsSpeed(-strength)
         }
         binding.allMotorJoystick.setOnMoveListener { angle, strength ->
-            if (angle == 90)
-                mainViewModel.updateMotorsSpeed(strength, strength)
-            else
-                mainViewModel.updateMotorsSpeed(-strength, -strength)
+            if (angle == 90) {
+                mainViewModel.updateRightMotorsSpeed(strength)
+                mainViewModel.updateLeftMotorsSpeed(strength)
+            } else {
+                mainViewModel.updateRightMotorsSpeed(-strength)
+                mainViewModel.updateLeftMotorsSpeed(-strength)
+            }
         }
         binding.webView.loadUrl("file:///android_asset/index.html")
         binding.webView.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView, url: String) {
-                Toast.makeText(this@MainActivity,url,Toast.LENGTH_LONG).show()
+                Toast.makeText(this@MainActivity, url, Toast.LENGTH_LONG).show()
                 mainViewModel.gyroscope.observe(this@MainActivity) {
                     binding.textViewX.text = "X:" + it.x.toString()
                     binding.textViewY.text = "Y:" + it.z.toString()
@@ -131,6 +139,29 @@ class MainActivity : AppCompatActivity() {
             binding.textViewBallast2.text = "ballast RB " + it.index2
             binding.textViewBallast3.text = "ballast LB " + it.index3
             binding.textViewBallast4.text = "ballast LT " + it.index4
+        }
+        mainViewModel.onOffStatus.observe(this) {
+            if (it)
+                binding.OnOffImageView.setImageResource(R.drawable.baseline_power_24)
+            else
+                binding.OnOffImageView.setImageResource(R.drawable.baseline_power_off_24)
+        }
+        mainViewModel.batteryLevel.observe(this) {
+            binding.batteryProgress.progress = it
+        }
+        binding.cameraImageView.setOnClickListener {
+            //intent to camera app
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.setPackage("generalplus.com.GPCamDemo")
+            try {
+                startActivity(intent)
+            } catch (e: Exception) {
+                Toast.makeText(this, "Camera app not found", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        binding.OnOffImageView.setOnClickListener {
+            mainViewModel.updateOnOff()
         }
 
     }

@@ -17,6 +17,8 @@ class MainViewModel : ViewModel() {
     val gyroscope: MutableLiveData<Gyroscope> = MutableLiveData()
     val ballast: MutableLiveData<Ballast> = MutableLiveData()
     val ballastIndex: MutableLiveData<Ballast> = MutableLiveData()
+    val onOffStatus: MutableLiveData<Boolean> = MutableLiveData()
+    val batteryLevel: MutableLiveData<Int> = MutableLiveData()
 
     init {
         ballast.value = Ballast(0, 0, 0, 0, 0)
@@ -47,10 +49,29 @@ class MainViewModel : ViewModel() {
             override fun onCancelled(error: DatabaseError) {
             }
         })
+        database.getReference("data").child("onOff").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                onOffStatus.value = snapshot.getValue<Boolean>()!!
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+        database.reference.child("data").child("batteryLevel").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                batteryLevel.value = snapshot.getValue<Int>()!!
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
     }
 
-    fun updateMotorsSpeed(rightSpeed: Int, leftSpeed: Int) {
+    fun updateRightMotorsSpeed(rightSpeed: Int) {
         database.getReference("data").child("motorRightSpeed").setValue(rightSpeed)
+    }
+
+    fun updateLeftMotorsSpeed(leftSpeed: Int) {
         database.getReference("data").child("motorLeftSpeed").setValue(leftSpeed)
     }
 
@@ -91,6 +112,11 @@ class MainViewModel : ViewModel() {
         database.getReference("data").child("index4").setValue(clamp(ballast.value!!.index4, 0, 30))
         database.getReference("data").child("indexAll").setValue(ballast.value!!.indexAll)
 
+    }
+
+    fun updateOnOff() {
+        onOffStatus.value = !onOffStatus.value!!
+        database.getReference("data").child("onOff").setValue(onOffStatus.value)
     }
 
 }
